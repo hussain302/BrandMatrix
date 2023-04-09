@@ -1,0 +1,150 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Dotnet Practices\\Dotnet Projects\\BrandMatrix App\\BrandMatrix\\BrandMatrix.Utils\\BrandMatrix.Utils.csproj": {}
+  },
+  "projects": {
+    "D:\\Dotnet Practices\\Dotnet Projects\\BrandMatrix App\\BrandMatrix\\BrandMatrix.Models\\BrandMatrix.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Dotnet Practices\\Dotnet Projects\\BrandMatrix App\\BrandMatrix\\BrandMatrix.Models\\BrandMatrix.Models.csproj",
+        "projectName": "BrandMatrix.Models",
+        "projectPath": "D:\\Dotnet Practices\\Dotnet Projects\\BrandMatrix App\\BrandMatrix\\BrandMatrix.Models\\BrandMatrix.Models.csproj",
+        "packagesPath": "C:\\Users\\Muhammad.Hussain\\.nuget\\packages\\",
+        "outputPath": "D:\\Dotnet Practices\\Dotnet Projects\\BrandMatrix App\\BrandMatrix\\BrandMatrix.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Muhammad.Hussain\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Dotnet Practices\\Dotnet Projects\\BrandMatrix App\\BrandMatrix\\BrandMatrix.Utils\\BrandMatrix.Utils.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Dotnet Practices\\Dotnet Projects\\BrandMatrix App\\BrandMatrix\\BrandMatrix.Utils\\BrandMatrix.Utils.csproj",
+        "projectName": "BrandMatrix.Utils",
+        "projectPath": "D:\\Dotnet Practices\\Dotnet Projects\\BrandMatrix App\\BrandMatrix\\BrandMatrix.Utils\\BrandMatrix.Utils.csproj",
+        "packagesPath": "C:\\Users\\Muhammad.Hussain\\.nuget\\packages\\",
+        "outputPath": "D:\\Dotnet Practices\\Dotnet Projects\\BrandMatrix App\\BrandMatrix\\BrandMatrix.Utils\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Muhammad.Hussain\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\Dotnet Practices\\Dotnet Projects\\BrandMatrix App\\BrandMatrix\\BrandMatrix.Models\\BrandMatrix.Models.csproj": {
+                "projectPath": "D:\\Dotnet Practices\\Dotnet Projects\\BrandMatrix App\\BrandMatrix\\BrandMatrix.Models\\BrandMatrix.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

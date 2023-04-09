@@ -1,0 +1,51 @@
+﻿@model Organizations
+@{
+    ViewData["Title"] = "Create Organization";
+    Layout = "~/Areas/User/Views/Shared/_MinimalLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 mt-5">
+            <div class="card shadow">
+                <div class="card-header bg-white">
+                    <h3 class="mb-0 text-center">@ViewData["Title"]</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Step 1 -->
+                    <div class="step1">
+                        <h3>Step 1: Personal Information</h3>
+                        <form asp-action="SignupUserStepOne" method="post">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Organization</label>
+                                <input type="text" asp-for="OrganizationName" class="form-control" id="name" placeholder="Enter Organization's Name" required/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Owner</label>
+                                <input type="text" asp-for="OwnerName" class="form-control" id="name" placeholder="Enter Organization Owner's Name"  required/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" asp-for="Email" class="form-control" id="email" placeholder="Enter Email Address" required/>
+                                <small> Your email should be a working email </small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Phone</label>
+                                <input type="text" asp-for="Phone" class="form-control" id="email" placeholder="Enter Phone" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="Website" class="form-label">Website</label>
+                                <input type="text" asp-for="Website" class="form-control" id="Website" placeholder="Enter URL of Your Website" />
+                                <small> If you have any potfolio website </small>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-outline-dark btn-block">Next step</button>
+                            </div>
+                        </form>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
