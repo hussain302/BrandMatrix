@@ -20,6 +20,18 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Organization/CreateOrEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JnYW5pemF0aW9uXENyZWF0ZU9yRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Organization/DeleteOrDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JnYW5pemF0aW9uXERlbGV0ZU9yRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Organization/Manage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JnYW5pemF0aW9uXE1hbmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Shared/_Notification.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
