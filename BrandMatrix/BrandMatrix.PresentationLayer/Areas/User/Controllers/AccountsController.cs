@@ -27,7 +27,7 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
         {
             return View();
         }
-
+        //commecnt
         [HttpPost]
         public IActionResult SigninUser(LoginModel model)
         {
