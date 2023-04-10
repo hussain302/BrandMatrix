@@ -2,7 +2,11 @@
 {
     public class Organizations
     {
-        
+        public Organizations()
+        {
+            
+        }
+
         public int OrganizationId { get; set; }
         
         public string OrganizationName { get; set; } = string.Empty;

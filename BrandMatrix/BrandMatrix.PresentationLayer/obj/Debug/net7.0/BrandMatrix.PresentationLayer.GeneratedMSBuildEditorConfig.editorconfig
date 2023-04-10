@@ -40,6 +40,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Subscriptions/CreateOrEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3Vic2NyaXB0aW9uc1xDcmVhdGVPckVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Subscriptions/DeleteOrDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3Vic2NyaXB0aW9uc1xEZWxldGVPckRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Subscriptions/Manage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3Vic2NyaXB0aW9uc1xNYW5hZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Users/CreateOrEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcQ3JlYXRlT3JFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Users/DeleteOrDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcRGVsZXRlT3JEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Users/Manage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcTWFuYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

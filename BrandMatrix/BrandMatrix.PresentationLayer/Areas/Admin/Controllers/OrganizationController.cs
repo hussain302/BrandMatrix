@@ -42,13 +42,13 @@ namespace BrandMatrix.PresentationLayer.Areas.Admin.Controllers
             {
                 if (id == null)
                 {
-                    ViewData["Title"] = "Create";
+                    ViewData["Title"] = "Create Organization";
                     ViewData["button-color"] = "btn btn-primary";
                     return View();
                 }
                 else
                 {
-                    ViewData["Title"] = "Update";
+                    ViewData["Title"] = "Update Organization";
                     ViewData["button-color"] = "btn btn-success";
 
                     var model = await orgRepository.GetByIdAsync("spFetchOrganizationById", new List<SqlParameter>
@@ -71,6 +71,8 @@ namespace BrandMatrix.PresentationLayer.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ResponseCache(Duration = 30, Location = ResponseCacheLocation.Client)]
+
         public async Task<IActionResult> CreateOrEdit(Organizations model)
         {
             try
@@ -224,12 +226,12 @@ namespace BrandMatrix.PresentationLayer.Areas.Admin.Controllers
 
                 if (page.ToLower() is "delete")
                 {
-                    ViewData["Title"] = "Delete";
+                    ViewData["Title"] = "Delete Organization";
                     ViewData["button-color"] = "btn btn-danger";
                 }
                 else
                 {
-                    ViewData["Title"] = "Details";
+                    ViewData["Title"] = "Details Organization";
                     ViewData["button-color"] = "btn btn-warning";
                 }
                 return View(model);

@@ -6,7 +6,16 @@ using BrandMatrix.Domain.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+
+#region Build In Services
+
 builder.Services.AddControllersWithViews();
+
+#endregion
+
+#region Data Access Layer Services 
+
 builder.Services.AddScoped<ISqlConnection>(sp =>
 {
     var configuration = sp.GetRequiredService<IConfiguration>();
@@ -15,8 +24,22 @@ builder.Services.AddScoped<ISqlConnection>(sp =>
     return new SqlConnectionService(connectionString, logger);
 });
 
+#endregion
+
+#region Business Logic Layer Services
+
 builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+#endregion Access Layer Services
+
+#region 3rd Party Services
+
 builder.Services.AddSession();
+
+#endregion
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

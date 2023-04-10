@@ -1,0 +1,80 @@
+﻿@model Subscriptions
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <div class="text-center bg-secondary">
+        <h1 class="display-4 mt-2 pt-2 mb-3 text-white"> @ViewData["Title"] Subscriptions </h1>
+        <a asp-action="Manage" class="mb-3 btn btn-success">
+            Back 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="19" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+            </svg>
+        </a>
+    </div>
+
+    <div class="card-body">
+        <div class="">
+            <form asp-action="CreateOrEdit" method="post">             
+                
+                <input asp-for="SubscriptionId" hidden="hidden" />
+
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label for="name" class="form-label">Organization</label>
+                        
+                        @if (ViewData["Title"] is "Update Subscriptions")
+                        {
+                            <input type="text" value="@Model.OrganizationName" disabled class="form-control" id="email" placeholder="Enter OrganizationName" />
+                        }
+                        else
+                        {
+                            <select class="form-control" asp-for="OrganizationId">
+                                <option value="">Select Organization</option>
+                                @foreach (var org in ViewBag.Orgs)
+                                {
+                                    <option value="@org.OrganizationId">@org.OrganizationName - @org.OwnerName</option>
+                                }
+                            </select>                            
+                        }
+                    </div>   
+                    <div class="mb-3 col-6">
+                        <label for="email" class="form-label">Subscription Plan</label>
+                        <select required asp-for="Plan" class="form-control">
+                            <option value="">Select Subscription's Plan</option>
+                            <option value="Premium">Premium</option>
+                            <option value="Standard">Standard</option>
+                            <option value="Trial">Trial</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col">
+                        <label for="email" class="form-label">Duration</label>
+                        <input type="number" min="10"  asp-for="DurationInDays" class="form-control" id="email" placeholder="Enter Subscription's Duration" required />
+                    </div>
+                
+                    <div class="mb-3 col">
+                        <label for="email" class="form-label">Price</label>
+                        <input type="number" min="10"  asp-for="Price" class="form-control" id="email" placeholder="Enter Subscription's Price" required />
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label for="Website" class="form-label">Description</label>
+                    <textarea class="form-control" placeholder="Enter Description of subscription" asp-for="Description" id="Website" rows="2">
+                    </textarea>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="@ViewData["button-color"] btn-block"> @ViewData["Title"] </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
