@@ -15,11 +15,12 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
     {
         private readonly ILogger<AccountsController> logger;
         private readonly IOrganizationRepository orgRepository;
-
-        public AccountsController(ILogger<AccountsController> logger, IOrganizationRepository orgRepository)
+        private readonly IConfiguration configuration;
+        public AccountsController(ILogger<AccountsController> logger, IOrganizationRepository orgRepository, IConfiguration configuration)
         {
             this.logger = logger;
             this.orgRepository = orgRepository;
+            this.configuration = configuration;
         }
 
         [HttpGet]
@@ -31,7 +32,7 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
         [HttpPost]
         public IActionResult SigninUser(LoginModel model)
         {
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -69,61 +70,105 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
             {
                 var personalInfo = JsonSerializer.Deserialize<Organizations>(HttpContext.Session.Get("personalInfo"));
                 var parameters = new List<SqlParameter>
-                {
-                    new SqlParameter("@organizationName", SqlDbType.NVarChar)
                     {
-                           Direction = ParameterDirection.Input,
-                           Value = personalInfo.OrganizationName
-                    },
-                    new SqlParameter("@ownerName", SqlDbType.NVarChar)
-                    {
-                           Direction = ParameterDirection.Input,
-                           Value = personalInfo.OwnerName
-                    },
-                    new SqlParameter("@email", SqlDbType.NVarChar)
-                    {
-                           Direction = ParameterDirection.Input,
-                           Value = personalInfo.Email
-                    },
-                    new SqlParameter("@phone", SqlDbType.NVarChar)
-                    {
-                           Direction = ParameterDirection.Input,
-                           Value = personalInfo.Phone
-                    },
-                    new SqlParameter("@website", SqlDbType.NVarChar)
-                    {
-                           Direction = ParameterDirection.Input,
-                           Value = personalInfo.Website
-                    },
-                    new SqlParameter("@address", SqlDbType.NVarChar)
-                    {
-                           Direction = ParameterDirection.Input,
-                           Value = addressInfo.Address
-                    },
-                    new SqlParameter("@city", SqlDbType.NVarChar)
-                    {
-                           Direction = ParameterDirection.Input,
-                           Value = addressInfo.City
-                    },
-                    new SqlParameter("@state", SqlDbType.NVarChar)
-                    {
-                           Direction = ParameterDirection.Input,
-                           Value = addressInfo.State
-                    },
-                    new SqlParameter("@country", SqlDbType.NVarChar)
-                    {
-                           Direction = ParameterDirection.Input,
-                           Value = addressInfo.Country
-                    },
-                    new SqlParameter("@zipCode", SqlDbType.NVarChar)
-                    {
-                           Direction = ParameterDirection.Input,
-                           Value = addressInfo.ZipCode
-                    },
-                };
+                        new SqlParameter("@organizationName", SqlDbType.NVarChar)
+                        {
+                               Direction = ParameterDirection.Input,
+                               Value = personalInfo.OrganizationName
+                        },
+                        new SqlParameter("@ownerName", SqlDbType.NVarChar)
+                        {
+                               Direction = ParameterDirection.Input,
+                               Value = personalInfo.OwnerName
+                        },
+                        new SqlParameter("@email", SqlDbType.NVarChar)
+                        {
+                               Direction = ParameterDirection.Input,
+                               Value = personalInfo.Email
+                        },
+                        new SqlParameter("@phone", SqlDbType.NVarChar)
+                        {
+                               Direction = ParameterDirection.Input,
+                               Value = personalInfo.Phone
+                        },
+                        new SqlParameter("@website", SqlDbType.NVarChar)
+                        {
+                               Direction = ParameterDirection.Input,
+                               Value = personalInfo.Website
+                        },
+                        new SqlParameter("@address", SqlDbType.NVarChar)
+                        {
+                               Direction = ParameterDirection.Input,
+                               Value = addressInfo.Address
+                        },
+                        new SqlParameter("@city", SqlDbType.NVarChar)
+                        {
+                               Direction = ParameterDirection.Input,
+                               Value = addressInfo.City
+                        },
+                        new SqlParameter("@state", SqlDbType.NVarChar)
+                        {
+                               Direction = ParameterDirection.Input,
+                               Value = addressInfo.State
+                        },
+                        new SqlParameter("@country", SqlDbType.NVarChar)
+                        {
+                               Direction = ParameterDirection.Input,
+                               Value = addressInfo.Country
+                        },
+                        new SqlParameter("@zipCode", SqlDbType.NVarChar)
+                        {
+                               Direction = ParameterDirection.Input,
+                               Value = addressInfo.ZipCode
+                        },
+                    };
                 var response = await orgRepository.CreateAsync("spCreateOrganization", parameters);
 
-                if(response) TempData["Success"] = "Organization Created successfully. You will Contacted Soon!";
+                if (response)
+                {
+                    var sender = configuration.GetValue<string>("senderEmail");
+
+                    var password = configuration.GetValue<string>("senderEmailKey");
+
+                    var msgBody = SendEmail.EmailTemp.Replace("{Owner Name}", personalInfo.OwnerName)
+                                                     .Replace("{Organization Name}", personalInfo.OrganizationName);
+
+                    var adminMsgBody = SendEmail.EmailTempAdmin.Replace("{Owner Name}", personalInfo.OwnerName)
+                                                               .Replace("{Organization Name}", personalInfo.OrganizationName)
+                                                               .Replace("{email}", personalInfo.Email)
+                                                               .Replace("{phone}", personalInfo.Phone)
+                                                               .Replace("{address}", addressInfo.Address)
+                                                               .Replace("{city}", addressInfo.Address)
+                                                               .Replace("{state}", addressInfo.Address)
+                                                               .Replace("{country}", addressInfo.Address)
+                                                               .Replace("{zipCode}", addressInfo.Address);
+
+                    if (!string.IsNullOrWhiteSpace(sender) && !string.IsNullOrWhiteSpace(password) && !string.IsNullOrWhiteSpace(personalInfo.Email))
+                    {
+                        var res  = await SendEmail.PostAnEmail(
+                                         senderEmail: sender,
+                                         senderEmailKey: password,
+                                         to: personalInfo.Email,
+                                         subject: $"{personalInfo.OrganizationName} Registered Successfully!",
+                                         body: msgBody);
+
+
+                        if (res)
+                        {
+                            await SendEmail.PostAnEmail(
+                                  senderEmail: sender,
+                                  senderEmailKey: password,
+                                  to: sender,
+                                  subject: $"New Subscription Request",
+                                  body: adminMsgBody);
+                        }
+
+                    }
+
+                    TempData["Success"] = "Organization Created successfully. You will Contacted Soon!";
+
+                }
+
                 else TempData["Error"] = "Account Creation Unsuccessful. Please Contact Customer Support";
 
                 HttpContext.Session.Clear();
