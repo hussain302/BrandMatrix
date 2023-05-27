@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Dotnet Practices\Dotnet Projects\BrandMatrix App\BrandMatrix\BrandMatrix.PresentationLayer
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Accounts/SignInAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWNjb3VudHNcU2lnbkluQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Home/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -7,7 +7,7 @@ namespace BrandMatrix.DataAccessLayer.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class, new()
     {
-        private readonly ISqlConnection sqlConnection;
+        protected readonly ISqlConnection sqlConnection;
         public BaseRepository(ISqlConnection sqlConnection)
         {
             this.sqlConnection = sqlConnection;
@@ -122,7 +122,7 @@ namespace BrandMatrix.DataAccessLayer.Repositories
             }
         }
 
-        private T MapReaderToEntity(IDataReader reader)
+        protected T MapReaderToEntity(IDataReader reader)
         {
             T entity = new T();
             var properties = typeof(T).GetProperties();

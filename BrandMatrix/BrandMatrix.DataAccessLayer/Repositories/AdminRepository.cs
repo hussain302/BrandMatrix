@@ -5,23 +5,19 @@ using System.Data.SqlClient;
 
 namespace BrandMatrix.DataAccessLayer.Repositories
 {
-    public class UserRepository : BaseRepository<User>, IUserRepository
+    public class AdminRepository : BaseRepository<Admin>, IAdminRepository
     {
-        public UserRepository(ISqlConnection sqlConnection) : base(sqlConnection)
+        public AdminRepository(ISqlConnection sqlConnection) : base(sqlConnection) { }
+
+        public async Task<Admin> LoginAdminAsync(string spName, List<SqlParameter> parameters)
         {
-
-
-        }
-
-        public async Task<User> LoginUserAsync(string spName, List<SqlParameter> parameters)
-        {
-            User result = new User();
+            Admin result = new Admin();
             try
             {
                 var reader = await sqlConnection.ExecuteSPRequestAsync(spName, parameters);
                 while (await reader.ReadAsync())
                 {
-                    User user = MapReaderToEntity(reader);
+                    Admin user = MapReaderToEntity(reader);
                     result = user;
                 }
 

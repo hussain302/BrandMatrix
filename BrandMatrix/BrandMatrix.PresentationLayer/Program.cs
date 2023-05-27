@@ -30,6 +30,7 @@ builder.Services.AddScoped<ISqlConnection>(sp =>
 
 builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
 builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 #endregion Access Layer Services
@@ -56,10 +57,11 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 app.UseSession();
+
 app.MapControllerRoute(
-    name: "Admin",
+    name: "User",
     pattern: "{area:exists}/{controller}/{action}/{id?}",
-    defaults: new { area = "Admin", controller = "Home", action = "Dashboard" }
+    defaults: new { area = "User", controller = "Accounts", action = "SigninUser" }
 );
 
 app.Run();

@@ -1,6 +1,6 @@
-﻿@model LoginModel
+﻿@model Admin
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Login Admin";
     Layout = "~/Areas/User/Views/Shared/_MinimalLayout.cshtml";
 }
 
@@ -12,14 +12,16 @@
                     <h3 class="mb-0 text-center">@ViewData["Title"]</h3>
                 </div>
                 <div class="card-body">
-                    <form method="post" asp-area="User" asp-controller="Accounts" asp-action="SigninUser">
+                    <form method="post" asp-area="Admin" asp-controller="Accounts" asp-action="SigninAdmin">
+                                               
                         <div class="form-floating mb-3">
-                            <input type="email" asp-for="Email" class="form-control" id="email" name="email" placeholder="name@example.com">
-                            <label for="email">Email address</label>
+                            <input type="text" asp-for="Username" class="form-control" id="Username" name="Username" placeholder="Username">
+                            <label for="Username">Username</label>
                             <div class="invalid-feedback">
-                                Please enter a valid email address.
+                                Please enter a valid Username.
                             </div>
                         </div>
+
                         <div class="form-floating mb-3">
                             <input type="password" asp-for="Password" class="form-control" id="password" name="password" placeholder="Password">
                             <label for="password">Password</label>
@@ -27,9 +29,9 @@
                                 Please enter your password.
                             </div>
                         </div>
-                   
+
                         <div class="form-check mb-3">
-                            <input class="form-check-input" asp-for="IsRemember" type="checkbox" value="" id="rememberMe" name="rememberMe">
+                            <input class="form-check-input" type="checkbox" value="" id="rememberMe" name="rememberMe">
                             <label class="form-check-label" for="rememberMe">
                                 Remember me
                             </label>
@@ -37,14 +39,7 @@
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-outline-dark btn-block">Login</button>
                         </div>
-                    </form>
-                    <hr>
-                    <div class="text-center">
-                        <a href="#" class="text-dark">Forgot Password?</a>
-                    </div>
-                    <div class="text-center mt-3">
-                        <span>Don't have an account? </span><a asp-area="User" asp-controller="Accounts" asp-action="SignupUserStepOne" class="text-dark">Create Account</a>
-                    </div>
+                    </form>                                
                 </div>
             </div>
         </div>

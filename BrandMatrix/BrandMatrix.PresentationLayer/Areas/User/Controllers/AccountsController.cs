@@ -2,7 +2,6 @@
 using BrandMatrix.Models.DomainModels;
 using BrandMatrix.Models.ViewModels;
 using BrandMatrix.Utils;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
@@ -16,11 +15,14 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
         private readonly ILogger<AccountsController> logger;
         private readonly IOrganizationRepository orgRepository;
         private readonly IConfiguration configuration;
-        public AccountsController(ILogger<AccountsController> logger, IOrganizationRepository orgRepository, IConfiguration configuration)
+        private readonly IUserRepository userRepository;
+        public AccountsController(ILogger<AccountsController> logger, IOrganizationRepository orgRepository,
+            IConfiguration configuration, IUserRepository userRepository)
         {
             this.logger = logger;
             this.orgRepository = orgRepository;
             this.configuration = configuration;
+            this.userRepository = userRepository;
         }
 
         [HttpGet]
@@ -30,9 +32,34 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
         }
 
         [HttpPost]
-        public IActionResult SigninUser(LoginModel model)
+        public async Task<IActionResult> SigninUser(LoginModel model)
         {
-            return RedirectToAction("Index", "Home");
+            try
+            {
+                var parameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@email", SqlDbType.NVarChar) { Direction = ParameterDirection.Input, Value = model.Email }
+                };
+                Models.DomainModels.User user = await userRepository.LoginUserAsync("spLoginUser", parameters);           
+                if (string.IsNullOrWhiteSpace(user.OrganizationName) || string.IsNullOrWhiteSpace(user.FirstName) || string.IsNullOrWhiteSpace(user.LastName) || string.IsNullOrWhiteSpace(user.Password))
+                {
+                    TempData["Error"] = "User not found";
+                    return RedirectToAction(nameof(SigninUser));
+                }
+                bool decryptedPassword = PasswordHasher.VerifyPassword(password:model.Password, hashedPassword: user.Password);
+                string message = (decryptedPassword) ? $"{user.FirstName}, {user.LastName} logged in successfully!" : "You have entered as invalid password!";
+                if (decryptedPassword) TempData["Success"] = message;
+                else
+                {
+                    throw new Exception(message);
+                }
+                return RedirectToAction("HomePage", "Users", new { area = "User" });
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message.ToString();
+                return RedirectToAction(nameof(SigninUser));
+            }
         }
 
         [HttpGet]
@@ -152,21 +179,18 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
                                          subject: $"{personalInfo.OrganizationName} Registered Successfully!",
                                          body: msgBody);
 
-
                         if (res)
                         {
                             await SendEmail.PostAnEmail(
                                   senderEmail: sender,
                                   senderEmailKey: password,
                                   to: sender,
-                                  subject: $"New Subscription Request",
+                                  subject: $"New Subscription Request {personalInfo.OrganizationName}",
                                   body: adminMsgBody);
                         }
-
                     }
 
                     TempData["Success"] = "Organization Created successfully. You will Contacted Soon!";
-
                 }
 
                 else TempData["Error"] = "Account Creation Unsuccessful. Please Contact Customer Support";
