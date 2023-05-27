@@ -57,7 +57,9 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
                 }
                 HttpContext.Session.SetString("LoginUser", $"{user.FirstName} {user.LastName}");
                 HttpContext.Session.SetString("OrgName", $"{user.OrganizationName}");
-                return RedirectToAction("HomePage", "Home", new { area = "User" });
+                HttpContext.Session.SetString("OrgId", $"{user.OrganizationId}");
+                HttpContext.Session.SetString("UserId", $"{user.UserId}");
+                return RedirectToAction("Homepage", "Home", new { area = "User" });
             }
             catch (Exception ex)
             {
@@ -216,6 +218,8 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
             {
                 HttpContext.Session.Remove("LoginUser");
                 HttpContext.Session.Remove("OrgName");
+                HttpContext.Session.Remove("UserId");
+                HttpContext.Session.Remove("OrgId");
                 return RedirectToAction(nameof(SigninUser));
             }
             catch (Exception ex)
