@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Data;
 using BrandMatrix.Models.DomainModels;
+using BrandMatrix.PresentationLayer.Common;
 
 namespace BrandMatrix.PresentationLayer.Areas.Admin.Controllers
 {
@@ -45,8 +46,26 @@ namespace BrandMatrix.PresentationLayer.Areas.Admin.Controllers
                 {
                     throw new Exception("You have entered as invalid Username/Password!");
                 }
+                HttpContext.Session.SetString("adminUser", "adminUser");
+                HttpContext.Session.SetBool("IsAdmin", true);
                 TempData["Success"] = $"Admin logged in successfully!";
                 return RedirectToAction("Dashboard", "Home", new { area = "Admin" });
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message.ToString();
+                return RedirectToAction(nameof(SignInAdmin));
+            }
+        }
+
+        [HttpGet]
+        public IActionResult LogoutAdmin()
+        {
+            try
+            {
+                HttpContext.Session.Remove("User");
+                HttpContext.Session.Remove("IsAdmin");
+                return RedirectToAction(nameof(SignInAdmin));
             }
             catch (Exception ex)
             {

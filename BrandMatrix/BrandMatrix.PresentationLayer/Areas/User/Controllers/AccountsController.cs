@@ -1,6 +1,7 @@
 ﻿using BrandMatrix.BusinessLogicLayer.IRepositories;
 using BrandMatrix.Models.DomainModels;
 using BrandMatrix.Models.ViewModels;
+using BrandMatrix.PresentationLayer.Common;
 using BrandMatrix.Utils;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
@@ -12,6 +13,7 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
     [Area("User")]
     public class AccountsController : Controller
     {
+        
         private readonly ILogger<AccountsController> logger;
         private readonly IOrganizationRepository orgRepository;
         private readonly IConfiguration configuration;
@@ -53,7 +55,9 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
                 {
                     throw new Exception(message);
                 }
-                return RedirectToAction("HomePage", "Users", new { area = "User" });
+                HttpContext.Session.SetString("LoginUser", $"{user.FirstName} {user.LastName}");
+                HttpContext.Session.SetString("OrgName", $"{user.OrganizationName}");
+                return RedirectToAction("HomePage", "Home", new { area = "User" });
             }
             catch (Exception ex)
             {
@@ -204,5 +208,22 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
                 return RedirectToAction(nameof(SigninUser));
             }
         }
+        
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            try
+            {
+                HttpContext.Session.Remove("LoginUser");
+                HttpContext.Session.Remove("OrgName");
+                return RedirectToAction(nameof(SigninUser));
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message.ToString();
+                return RedirectToAction(nameof(SigninUser));
+            }
+        }
+
     }
 }

@@ -265,3 +265,4 @@ D:\Dotnet Practices\Dotnet Projects\BrandMatrix App\BrandMatrix\BrandMatrix.Pres
 D:\Dotnet Practices\Dotnet Projects\BrandMatrix App\BrandMatrix\BrandMatrix.PresentationLayer\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
 D:\Dotnet Practices\Dotnet Projects\BrandMatrix App\BrandMatrix\BrandMatrix.PresentationLayer\bin\Debug\net7.0\BrandMatrix.Utils.dll
 D:\Dotnet Practices\Dotnet Projects\BrandMatrix App\BrandMatrix\BrandMatrix.PresentationLayer\bin\Debug\net7.0\BrandMatrix.Utils.pdb
+D:\Dotnet Practices\Dotnet Projects\BrandMatrix App\BrandMatrix\BrandMatrix.PresentationLayer\obj\Debug\net7.0\scopedcss\Areas\User\Views\Shared\_Layout.cshtml.rz.scp.css

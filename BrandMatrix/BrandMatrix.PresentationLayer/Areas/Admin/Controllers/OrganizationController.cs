@@ -1,5 +1,6 @@
 ﻿using BrandMatrix.BusinessLogicLayer.IRepositories;
 using BrandMatrix.Models.DomainModels;
+using BrandMatrix.PresentationLayer.Common;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
@@ -8,6 +9,7 @@ namespace BrandMatrix.PresentationLayer.Areas.Admin.Controllers
 {
 
     [Area("Admin")]
+    [CustomAuthorization]
     public class OrganizationController : Controller
     {
         private readonly IOrganizationRepository orgRepository;

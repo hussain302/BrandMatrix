@@ -1,5 +1,6 @@
 ﻿using BrandMatrix.BusinessLogicLayer.IRepositories;
 using BrandMatrix.Models.DomainModels;
+using BrandMatrix.PresentationLayer.Common;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
@@ -9,6 +10,7 @@ namespace BrandMatrix.PresentationLayer.Areas.Admin.Controllers
 {
 
     [Area("Admin")]
+    [CustomAuthorization]
     public class UsersController : Controller
     {
         private readonly IUserRepository userRepository;

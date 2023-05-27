@@ -88,6 +88,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xBY2NvdW50c1xTaWdudXBVc2VyU3RlcFR3by5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/User/Views/Home/HomePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xIb21lXEhvbWVQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/User/Views/Shared/_Notification.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xTaGFyZWRcX05vdGlmaWNhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -107,6 +111,10 @@ build_metadata.AdditionalFiles.CssScope =
 [D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/Admin/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-kawfjdilho
+
+[D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/User/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xTaGFyZWRcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-kj5l87g9wb
 
 [D:/Dotnet Practices/Dotnet Projects/BrandMatrix App/BrandMatrix/BrandMatrix.PresentationLayer/Areas/User/Views/Shared/_MinimalLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xTaGFyZWRcX01pbmltYWxMYXlvdXQuY3NodG1s
