@@ -51,10 +51,7 @@ namespace BrandMatrix.PresentationLayer.Areas.User.Controllers
                 bool decryptedPassword = PasswordHasher.VerifyPassword(password:model.Password, hashedPassword: user.Password);
                 string message = (decryptedPassword) ? $"{user.FirstName}, {user.LastName} logged in successfully!" : "You have entered as invalid password!";
                 if (decryptedPassword) TempData["Success"] = message;
-                else
-                {
-                    throw new Exception(message);
-                }
+                else throw new Exception(message);
                 HttpContext.Session.SetString("LoginUser", $"{user.FirstName} {user.LastName}");
                 HttpContext.Session.SetString("OrgName", $"{user.OrganizationName}");
                 HttpContext.Session.SetString("OrgId", $"{user.OrganizationId}");
